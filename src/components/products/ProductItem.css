@@ -1,0 +1,15 @@
+.product_item_container {
+  background-color: red;
+  width: 500px;
+  border: gold 2px solid;
+  margin: 0 auto;
+}
+
+.product_item_img {
+  width: 100%;
+}
+
+h6 {
+  color: black;
+  font-size: 16px;
+}
