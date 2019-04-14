@@ -13,10 +13,18 @@ const ProductItem = React.memo((props) => {
     setWishProducts(wishProducts.filter(wishProd => wishProd !== product));
   };
 
+  const wishHandler = (isWishedONe) => () =>{
+    if (wishProducts.length >= 3) {
+      alert('장바구니에는 3개 까지만 담을 수 있어요!');
+      return;
+    }
+    isWishedONe ? removeFromWish() : addToWish();
+  };
+
   const wishButton = () => {
     const isWishedONe = wishProducts.includes(product);
     return (
-      <button onClick={isWishedONe ? removeFromWish : addToWish}>
+      <button onClick={wishHandler(isWishedONe)}>
         {isWishedONe ? '안 담기' : '담기'}
       </button>
     )

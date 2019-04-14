@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ProductList from './components/products/ProductList';
 import WishList from './components/wishlist/WishList';
-import { BrowserRouter, Route, NavLink } from 'react-router-dom';
-import './App.css';
 import { productItems } from "./data";
+import './App.css';
+
 
 const App = (props) => {
 
@@ -17,24 +18,12 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavLink
-          to="/products"
-          activeStyle={{
-            fontWeight: "bold",
-            color: "red"
-          }}
-        >
+        <Link to="/products">
           products
-        </NavLink>
-          <NavLink
-            to="/wishlist"
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red"
-            }}
-          >
-            wishlist
-        </NavLink>
+        </Link>
+        <Link to="/wishlist">
+          wishlist
+        </Link>
         <Route path="/products" exact
                render={() => <ProductList products={products} wishProducts={wishProducts} setWishProducts={setWishProducts}/>}
         />

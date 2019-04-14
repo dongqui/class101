@@ -1,8 +1,7 @@
 .product_item_container {
   background-color: red;
-  width: 500px;
+  width: 100%;
   border: gold 2px solid;
-  margin: 0 auto;
 }
 
 .product_item_img {
