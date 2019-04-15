@@ -98,6 +98,14 @@ export const productItems = [
   }
 ];
 
+export const getProductItems = (start, limit) => {
+  const data = productItems.slice(start, start + limit);
+  return {
+    totalCount: productItems.length,
+    data
+  }
+};
+
 
 // coupons.js
 export const coupons = [

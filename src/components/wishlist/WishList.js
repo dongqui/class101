@@ -21,19 +21,18 @@ const WishList = React.memo((props) => {
     setCoupon(coupon);
   };
 
-  const sumOfPrice = () => Object.values(sumOfProducts).reduce((sum, priceInfo) => {
-    const priceSmallSum = priceInfo.priceSmallSum;
-    if (!coupon || !priceInfo.discount) {
-      return sum + priceSmallSum
+  const sumOfPrice = () => {
+    let sum = Object.values(sumOfProducts).reduce((sum, priceInfo) => (sum + priceInfo.priceSmallSum), 0);
+    if (!coupon) {
+      return sum;
     }
     if (coupon.type === 'rate') {
-      return sum + Math.floor(priceSmallSum * ((100 - coupon.discountRate) / 100));
+      return Math.floor(sum * ((100 - coupon.discountRate) / 100));
     }
     if (coupon.type === 'amount') {
-      return sum + priceSmallSum - coupon.discountAmount;
+      return sum - coupon.discountAmount;
     }
-    return sum
-  }, 0);
+  };
 
   const couponOptions = () => {
     const options = couponList.map((coupon, idx) => <option value={idx}>{coupon.title}</option>);

@@ -4,15 +4,16 @@ import full_heart from '../../img/full_heart.png'
 import empty_heart from '../../img/empty_heart.png'
 
 const ProductItem = React.memo((props) => {
-  const { setWishProducts, wishProducts, product } = props;
+  const { dispatch, wishProducts, product } = props;
   const { title, coverImage, price } = product;
 
   const addToWish = () => {
-    setWishProducts([...wishProducts, product])
+    dispatch({wishProducts:[...wishProducts, product], type: 'setWishProduct'})
   };
 
   const removeFromWish = () => {
-    setWishProducts(wishProducts.filter(wishProd => wishProd !== product));
+    const filteredWithList = wishProducts.filter(wishProd => wishProd !== product);
+    dispatch({wishProducts: filteredWithList, type: 'setWishProduct'})
   };
 
   const wishHandler = (isWishedONe) => () =>{
@@ -40,6 +41,7 @@ const ProductItem = React.memo((props) => {
        <span className="product_item_price">가격: {price}</span>
        {wishButton()}
      </div>
+
    </li>
   )
 });
