@@ -15,7 +15,7 @@ const ProductList = React.memo((props) => {
   };
 
   return (
-    <ul>
+    <ul className="product_list_container">
       {renderProductItem()}
     </ul>
   )

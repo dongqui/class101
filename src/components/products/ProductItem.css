@@ -1,14 +1,37 @@
 .product_item_container {
-  background-color: red;
-  width: 100%;
-  border: gold 2px solid;
+  border: whitesmoke 1px solid;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .product_item_img {
-  width: 100%;
+  border-radius: 18px 18px 0 0;
+  width: 100%; /* You can set the dimensions to whatever you want */
+  height: 250px
 }
 
-h6 {
-  color: black;
-  font-size: 16px;
+.product_item_title {
+  white-space: pre-line;
+  font-weight: bold;
+  overflow: hidden;
+  height: 40px;
+}
+
+.product_item_content {
+  padding: 20px 20px 40px 20px;
+}
+
+.product_item_price {
+  float: left;
+  color: gray;
+  font-weight: bold;
+}
+
+.product_item_wishIcon {
+  float: right;
+  width: 25px;
+}
+
+.product_item_wishIcon:hover {
+  cursor: pointer;
 }

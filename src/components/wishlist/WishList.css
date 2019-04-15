@@ -1,0 +1,28 @@
+.wish_list_content {
+  border-bottom: lightgray 1px solid;
+}
+
+.wish_list_container {
+  margin: 50px auto;
+  width: 50%;
+}
+
+.wish_list_footer {
+  margin-top: 50px;
+}
+
+.wish_list_coupon {
+  float: left;
+}
+
+.wish_list_sum {
+  float:right;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+}
+
+.wish_list_empty {
+  text-align: center;
+  margin: 250px auto;
+}

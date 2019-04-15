@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import WishListItem from './WishListItem';
 import { coupons } from "../../data";
+import './WishList.css';
 
 const WishList = React.memo((props) => {
   const { wishProducts } = props;
@@ -15,7 +16,8 @@ const WishList = React.memo((props) => {
   };
 
   const couponSelectHandler = (e) => {
-    const coupon = JSON.parse(e.target.value);
+    const idx = e.target.value;
+    const coupon = couponList[idx];
     setCoupon(coupon);
   };
 
@@ -34,9 +36,9 @@ const WishList = React.memo((props) => {
   }, 0);
 
   const couponOptions = () => {
-    const options = couponList.map(coupon => <option value={JSON.stringify(coupon)}>{coupon.title}</option>);
+    const options = couponList.map((coupon, idx) => <option value={idx}>{coupon.title}</option>);
     return (
-      <select onChange={couponSelectHandler}>
+      <select className="wish_list_coupon" onChange={couponSelectHandler}>
         <option value="null">쿠폰 선택</option>
         {options}
       </select>
@@ -47,15 +49,23 @@ const WishList = React.memo((props) => {
     setCouponList(coupons);
   }, []);
 
+  if (!wishProducts.length) {
+    return (
+      <h1 className="wish_list_empty">장바구니가 비어있어요!</h1>
+
+    )
+  }
 
   return (
-    <>
-      <ul>
+    <div className="wish_list_container">
+      <ul className="wish_list_content">
         {wishProducts.map(product => <WishListItem sumOfPriceHandler={sumOfPriceHandler} product={product}/>)}
       </ul>
-      {couponOptions()}
-      {sumOfPrice()}
-    </>
+      <div className="wish_list_footer">
+        {couponOptions()}
+        <p className="wish_list_sum">합계: {sumOfPrice()}</p>
+      </div>
+    </div>
   )
 });
 

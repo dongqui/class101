@@ -18,16 +18,21 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Link to="/products">
-          products
-        </Link>
-        <Link to="/wishlist">
-          wishlist
-        </Link>
-        <Route path="/products" exact
-               render={() => <ProductList products={products} wishProducts={wishProducts} setWishProducts={setWishProducts}/>}
-        />
-        <Route path="/wishlist" render={() => <WishList wishProducts={wishProducts}/>} />
+        <div className="nav">
+          <span id="nav_header">CLASS101</span>
+          <Link to="/wishlist">
+            <span className="nav_dir">장바구니</span>
+          </Link>
+          <Link to="/products">
+            <span className="nav_dir">상품 목록</span>
+          </Link>
+        </div>
+        <div className="content">
+          <Route path="/products" exact
+                 render={() => <ProductList products={products} wishProducts={wishProducts} setWishProducts={setWishProducts}/>}/>
+          <Route path="/wishlist" exact
+                 render={() => <WishList wishProducts={wishProducts}/>} />
+        </div>
       </div>
     </BrowserRouter>
   );

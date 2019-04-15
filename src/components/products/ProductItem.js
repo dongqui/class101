@@ -1,5 +1,7 @@
 import React from 'react';
 import './ProductItem.css';
+import full_heart from '../../img/full_heart.png'
+import empty_heart from '../../img/empty_heart.png'
 
 const ProductItem = React.memo((props) => {
   const { setWishProducts, wishProducts, product } = props;
@@ -23,19 +25,21 @@ const ProductItem = React.memo((props) => {
 
   const wishButton = () => {
     const isWishedONe = wishProducts.includes(product);
+    const imgSrc = isWishedONe ? full_heart : empty_heart;
+    const imgAlt = isWishedONe ? '담기' : '담기 취소';
     return (
-      <button onClick={wishHandler(isWishedONe)}>
-        {isWishedONe ? '안 담기' : '담기'}
-      </button>
+      <img className="product_item_wishIcon" onClick={wishHandler(isWishedONe)} src={imgSrc} alt={imgAlt}/>
     )
   };
 
   return (
    <li className="product_item_container">
      <img className="product_item_img" src={coverImage}/>
-     <h6>{title}</h6>
-     <h6>{price}</h6>
-     {wishButton()}
+     <div className="product_item_content">
+       <p className="product_item_title">{title}</p>
+       <span className="product_item_price">가격: {price}</span>
+       {wishButton()}
+     </div>
    </li>
   )
 });
