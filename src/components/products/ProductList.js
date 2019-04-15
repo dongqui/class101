@@ -10,7 +10,7 @@ const ProductList = React.memo((props) => {
     const page = Math.ceil(totalProducts / 5);
     const pagination = [];
     for (let i = 1; i <= page; i++) {
-      pagination.push(<span onClick={() => requestProductItems((i - 1) * 5, 5)}>{i}</span>);
+      pagination.push(<span className="page" onClick={() => requestProductItems((i - 1) * 5, 5)}>{i}</span>);
     }
     return pagination
   };
@@ -28,7 +28,9 @@ const ProductList = React.memo((props) => {
       <ul className="product_list_container">
         {renderProductItem()}
       </ul>
-      {setPagination()}
+      <div className="pagination">
+        {setPagination()}
+      </div>
     </>
   )
 });
