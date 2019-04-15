@@ -19,7 +19,7 @@ const ProductList = React.memo((props) => {
     return products.map((product) =>
       <ProductItem key={product.id}
                    wishProducts={wishProducts}
-                   setWishProducts={dispatch}
+                   dispatch={dispatch}
                    product={product}/>);
   };
 
